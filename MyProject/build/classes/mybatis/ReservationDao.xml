@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="reservation">
+
+<select id="cafeSelectOne" parameterType="int" resultType="cafe">
+select * from cafe where cafeNum = #{cafeNum}
+</select>
+
+<select id="cafeList" parameterType="map" resultType="cafe">
+select * from cafe where cafekind = #{cafekind} and substr(cafelocation,0,2) = #{cafelocation}
+</select>
+
+<select id="reservationInsert" parameterType="reservation">
+insert into reservation values (#{reservenum},#{cafeNum}, #{tel}, #{pass}, #{time}, #{date}, #{people})
+</select>
+
+<delete id="reservationDelete" parameterType="num">
+delete from reservation where reservenum = #{reservenum}
+</delete>
+
+<select id="seqNextval" resultType="int">
+select reservation.nextval from dual
+</select>
+
+
+<select id="memberInsert" parameterType="member">
+insert into member values (#{id}, #{pass}, #{name}, #{gender}, #{tel}, #{email}, #{picture})
+</select>
+
+<select id="memberList" resultType="member">
+select  * from member
+</select>
+
+<select id="selectOne" parameterType="String" resultType="member">
+select * from member where id = #{id}
+</select>
+
+<update id="memberUpdate" parameterType="member">
+update member set name =#{name}, gender= #{gender},tel= #{tel}, 
+	email= #{email},picture= #{picture} where id=#{id} and pass =#{pass}
+</update>
+
+<delete id="memberDelete" parameterType="map">
+delete from member where id =#{id} and pass = #{pass}
+</delete>
+
+</mapper>

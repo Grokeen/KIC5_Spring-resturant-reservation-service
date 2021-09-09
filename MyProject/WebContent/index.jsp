@@ -9,4 +9,4 @@
 <body>
 <% response.sendRedirect(request.getContextPath()+"/reservation/main"); %>
 </body>
-</html>
+</html> <-- 김용록 -->

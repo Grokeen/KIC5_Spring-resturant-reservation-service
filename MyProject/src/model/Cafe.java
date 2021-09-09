@@ -60,6 +60,6 @@ public class Cafe {
 				+ cafepicture + "]";
 	}
 
-	
+	ii
 	
 }
